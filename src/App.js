@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import React from 'react';
+import Menu from './components/MenuComponent';
 
 class App extends React.Component{
   render(){
@@ -12,7 +13,7 @@ class App extends React.Component{
             <NavbarBrand href="/">Practice Application</NavbarBrand>
           </div>
         </Navbar>
-        
+        <Menu />
       </div>
     )
   }
