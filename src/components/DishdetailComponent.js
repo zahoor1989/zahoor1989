@@ -31,21 +31,24 @@ const RenderSelectedDishComments = ({comments}) => {
                     </Card>
                     )
                 });
-        return (comment)
+        return (
+            <div className="col-12 col-md-5 m-1">
+                <h4>Comments</h4>
+                {comment}
+            </div>);
         }else{
          return   <div></div>
         }
     }
 const DishdetailComponent= (props)=>{
         return (
-            <div className="row">
-                <div className="col-12 col-md-5 m-1">
-                    <RenderDish dish={props.dish} />
+            <div className="container">
+                <div className="row">
+                    <div className="col-12 col-md-5 m-1">
+                        <RenderDish dish={props.dish} />
+                    </div>
+                    <RenderSelectedDishComments comments={props.dish ? props.dish.comments : null} />
                 </div>
-                  <div className="col-12 col-md-5 m-1">
-                      <h3>Comments</h3>
-                  <RenderSelectedDishComments comments={props.dish ? props.dish.comments : null} />
-                  </div>
             </div>
             )
         }
