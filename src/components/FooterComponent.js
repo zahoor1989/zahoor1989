@@ -29,7 +29,7 @@ export default class Footer extends Component{
                         </address>
                     </div>
                     <div className="col-12 col-sm-4 align-self-center">
-                        <div className="text-center">
+                        <div className="text-right">
                         <li><Link to='/home'>Home</Link></li>
                         <li><Link to='/aboutus'>About Us</Link></li>
                         <li><Link to='/menu'>Menu</Link></li>
