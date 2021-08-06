@@ -11,49 +11,87 @@ import { Switch, Route, Redirect, Link} from 'react-router-dom';
 import { COMMENTS } from '../shared/comments';
 import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
+import {useState} from 'react'
+import About from './AboutUsComponent';
+
+// class Main extends React.Component{
+//   constructor(props){
+//     super(props);
+//     this.state = {
+//       dishes : DISHES,
+//       comments:COMMENTS,
+//       promotions : PROMOTIONS,
+//       leaders : LEADERS,
+//       selectedDish:null
+//     }
+//   }
+//   onDishSelect(dishId) {
+//     this.setState({ selectedDish: dishId});
+//   }
+
+//   render(){
+//     const HomePage = () => {
+//         return(
+//             <Home dish={this.state.dishes.filter(dish => dish.featured)[0]}
+//                 leader={this.state.leaders.filter(leader => leader.featured)[0]}
+//                 promotion={this.state.promotions.filter(promo => promo.featured)[0]}
+//             />
+//         );
+//       }
+//       const DishDetail = ({match}) => {
+//             return <DishdetailComponent dish={this.state.dishes.filter(dish => dish.id === parseInt(match.params.dishId,10))[0]}  
+//                                         comments={this.state.comments.filter(comment => comment.dishId === parseInt(match.params.dishId,10))}  />
+//       }
+//     return(
+//       <div>
+//         <Header />
+//         <Switch>
+//             <Route  path="/home" component={HomePage} />
+//             <Route  exact path="/menu" component={() => <Menu dishes={this.state.dishes} />} />
+//             <Route path="/menu/:dishId" component={DishDetail} />
+//             <Redirect to="/home" />
+//         </Switch>
+//         <Footer />
+//       </div>
+//     )
+//   }
+// }
+
+// export default Main;
 
 
-class Main extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      dishes : DISHES,
-      comments:COMMENTS,
-      promotions : PROMOTIONS,
-      leaders : LEADERS,
-      selectedDish:null
-    }
-  }
-  onDishSelect(dishId) {
-    this.setState({ selectedDish: dishId});
-  }
 
-  render(){
+export default function MainComponent() {
+    const [dishes,setDishes] = useState(DISHES)
+    const [comments,setcomments] = useState(COMMENTS)
+    const [promotions,setpromotions] = useState(PROMOTIONS)
+    const [leaders,setleaders] = useState(LEADERS)
+    const [selectedDish,setSelectedDish] = useState(null)
     const HomePage = () => {
         return(
-            <Home dish={this.state.dishes.filter(dish => dish.featured)[0]}
-                leader={this.state.leaders.filter(leader => leader.featured)[0]}
-                promotion={this.state.promotions.filter(promo => promo.featured)[0]}
+            <Home dish={dishes.filter(dish => dish.featured)[0]}
+                leader={leaders.filter(leader => leader.featured)[0]}
+                promotion={promotions.filter(promo => promo.featured)[0]}
             />
         );
       }
       const DishDetail = ({match}) => {
-            return <DishdetailComponent dish={this.state.dishes.filter(dish => dish.id === parseInt(match.params.dishId,10))[0]}  
-                                        comments={this.state.comments.filter(comment => comment.dishId === parseInt(match.params.dishId,10))}  />
+            return <DishdetailComponent dish={dishes.filter(dish => dish.id === parseInt(match.params.dishId,10))[0]}  
+                                        comments={comments.filter(comment => comment.dishId === parseInt(match.params.dishId,10))}  />
       }
-    return(
-      <div>
-        <Header />
+    return (
+        <div>
+            <Header />
         <Switch>
             <Route  path="/home" component={HomePage} />
-            <Route  exact path="/menu" component={() => <Menu dishes={this.state.dishes} />} />
+            <Route  exact path="/menu" component={() => <Menu dishes={dishes} />} />
             <Route path="/menu/:dishId" component={DishDetail} />
+            <Route exact path="/aboutus" component={() => <About leaders={leaders} />} />
+            <Route exact  path="/contactus" component={() => <ContactUs />} />
             <Redirect to="/home" />
         </Switch>
-        <Footer />
-      </div>
+        <Footer /> 
+        </div>
     )
-  }
 }
 
-export default Main;

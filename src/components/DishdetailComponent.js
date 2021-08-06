@@ -43,16 +43,16 @@ const RenderSelectedDishComments = ({comments}) => {
         }
     }
 const DishdetailComponent= (props)=>{
-    console.log(props,"<<<<<<props")
+    if(props.dish != null){
         return (
             <div className="container">
                    <div className="row">
                     <Breadcrumb>
                         <BreadcrumbItem><Link to="/menu">Menu</Link></BreadcrumbItem>
-                        <BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+                        <BreadcrumbItem active>{props.dish ? props.dish.name : null}</BreadcrumbItem>
                     </Breadcrumb>
                     <div className="col-12">
-                        <h3>{props.dish.name}</h3>
+                        <h3>{props.dish ? props.dish.name : null}</h3>
                         <hr />
                     </div>                
                 </div>
@@ -64,7 +64,10 @@ const DishdetailComponent= (props)=>{
                 </div>
             </div>
             )
+        }else{
+            return   <div></div>
         }
+    }
     
 
 
