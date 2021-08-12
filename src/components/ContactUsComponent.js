@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {Button, Form, FormGroup, Label, Input, Col,Row} from 'reactstrap';
-import { LocalForm, Control, Errors } from 'react-redux-form';
+import {Button, Label, Col,Row} from 'reactstrap';
+import { LocalForm, Control } from 'react-redux-form';
 
 export default class ContactUs extends Component{
     constructor(props){
@@ -79,7 +79,7 @@ export default class ContactUs extends Component{
                                     <Control.text model=".email" id="email" name="email" className="form-control"  />
                                 </Col>
                             </Row>
-                            <Row row className="mt-2">
+                            <Row className="mt-2">
                                 <Col md={{size: 6, offset: 2}}>
                                     <div className="form-check">
                                         <Label check>
@@ -89,20 +89,20 @@ export default class ContactUs extends Component{
                                     </div>
                                 </Col>
                                 <Col md={{size: 3, offset: 1}}>
-                                    <Control.select model=".contactType" name="contactType"  className="form-control">
+                                    <Control.select model=".contactType" name="contactType"  className="form-select">
                                         <option>Tel.</option>
                                         <option>Email</option>
                                     </Control.select>
                                 </Col>
                             </Row>
-                            <Row row className="form-group mt-2">
+                            <Row className="form-group mt-2">
                                 <Label htmlFor="message" md={2}>Your Feedback</Label>
                                 <Col md={10}>
                                     <Control.textarea model=".message" id="message" name="message" className="form-control"
                                         rows="12"></Control.textarea>
                                 </Col>
                             </Row>
-                            <Row row className="mt-5">
+                            <Row className="mt-5">
                                 <Col md={{size:10, offset:2}}>
                                 <Button type="submit" color="primary">
                                         Send Feedback

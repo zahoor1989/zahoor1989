@@ -1,7 +1,7 @@
 import React from 'react';
-import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardImg, CardTitle, CardText} from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardImg, CardTitle, CardText, ModalHeader, ModalBody} from 'reactstrap';
 import {Link} from 'react-router-dom';
-
+import CommentForm from './CommentForm';
 
 
 const RenderDish = ({dish})=>{
@@ -34,10 +34,10 @@ const RenderSelectedDishComments = ({comments}) => {
                     )
                 });
         return (
-            <div className="col-12 col-md-5 m-1">
+            <>
                 <h4>Comments</h4>
                 {comment}
-            </div>);
+            </>);
         }else{
          return   <div></div>
         }
@@ -60,7 +60,10 @@ const DishdetailComponent= (props)=>{
                     <div className="col-12 col-md-5 m-1">
                         <RenderDish dish={props.dish} />
                     </div>
+                    <div className="col-12 col-md-5 m-1">
                     <RenderSelectedDishComments comments={props.comments} />
+                    <CommentForm />
+                    </div>
                 </div>
             </div>
             )
