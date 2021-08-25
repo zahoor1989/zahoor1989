@@ -62,7 +62,7 @@ const DishdetailComponent= (props)=>{
                     </div>
                     <div className="col-12 col-md-5 m-1">
                     <RenderSelectedDishComments comments={props.comments} />
-                    <CommentForm />
+                    <CommentForm  addComment={props.addComment} dishId={props.dish.id}/>
                     </div>
                 </div>
             </div>

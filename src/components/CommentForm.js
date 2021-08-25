@@ -17,8 +17,10 @@ export default class CommentForm extends Component {
         this.toggleModal = this.toggleModal.bind(this);
     }
     handleSubmit = (values)=>{
+        debugger
         console.log('Current State is: ' + JSON.stringify(values));
         alert('Current State is: ' + JSON.stringify(values));
+        this.props.addComment(this.props.dishId,values.yourName, values.rating? values.rating : 1, values.message)
     }
 
     toggleModal = () => {
@@ -41,12 +43,12 @@ export default class CommentForm extends Component {
                     <Row className="mt-2 form-group">
                         <Label htmlFor="rating" md={2}>Rating</Label>
                         <Col md={10}>
-                            <Control.select model=".rating" name="rating"  className="form-control">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                            <Control.select model=".rating" name="rating" id="rating" className="form-control">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
                                     </Control.select>
                         </Col>
                     </Row>
@@ -72,7 +74,7 @@ export default class CommentForm extends Component {
                                     </Control.textarea>
                                 </Col>
                             </Row>
-                    <Row row className="mt-5">
+                    <Row className="mt-5">
                         <Col md={{size:10, offset:2}}>
                             <Button type="submit" color="primary">
                                     Submit
